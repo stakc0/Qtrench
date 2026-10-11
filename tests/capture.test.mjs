@@ -1,5 +1,5 @@
 import {readFile} from 'node:fs/promises';
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-if (!html.includes('Qtrench: the quantum-proof terminal')) throw new Error('Qtrench title missing');
-for (const marker of ['Q-Vault','loadChart','loadTrades','Jupiter','GeckoTerminal']) if (!html.includes(marker)) throw new Error(`Missing terminal marker: ${marker}`);
-console.log('Qtrench capture contains terminal, chart, trades and provider flows');
+if (!html.includes('No-Fee Terminal — Live Solana trading')) throw new Error('No-Fee Terminal title missing');
+for (const marker of ['Wallet','loadChart','loadTrades','Jupiter','GeckoTerminal','signAndSendTransaction']) if (!html.includes(marker)) throw new Error(`Missing terminal marker: ${marker}`);
+console.log('No-Fee Terminal contains wallet, chart, trades and Jupiter flows');

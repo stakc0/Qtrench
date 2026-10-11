@@ -1,6 +1,6 @@
-# Qtrench terminal clone
+# No-Fee Terminal
 
-This repository captures the working Qtrench terminal surface from `qtrench.fun` as a runnable standalone page.
+A standalone Solana terminal with live market data, charts, wallet tracking, and direct Jupiter execution. The terminal is the default surface and adds no platform fee.
 
 ## Run
 
@@ -11,4 +11,4 @@ npm start
 
 Open `http://localhost:4173/`.
 
-The terminal keeps its live market behavior: GeckoTerminal OHLCV/trades, Jupiter quotes, wallet connectors, limit/market controls, and the Q-Vault UI. The server is only the local static shell; provider calls remain client-side exactly as the reference terminal uses them.
+Market data uses GeckoTerminal. Quotes, swaps, holdings, and routing use Jupiter. Wallet approval and transaction signing happen in the connected Phantom, Solflare, or Backpack wallet.
