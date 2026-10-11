@@ -541,12 +541,11 @@ function render(c) { const L = $('#L' + c), list = COLS[c], els = rowEls[c]; $('
     else if (e._h !== html) { e.innerHTML = html; e._h = html; } seen.add(c + t.id); if (L.children[i] !== e) L.insertBefore(e, L.children[i] || null); });
   if (c === 0) firstNew = false; }
 setInterval(() => { for (const e of $$('[data-age]')) if (e.dataset.age) e.textContent = age(e.dataset.age);
-  for (let c = 0; c < 3; c++) { const st = $('#st' + c), s = OK[c] ? Math.round((Date.now() - OK[c]) / 1000) : null, L = $('#L' + c); const down = s === null ? (Date.now() - T0W > 9000) : s > 20;
-    st.textContent = s === null ? (down ? 'feed paused' : 'connecting…') : down ? 'feed paused' : 'live · ' + (s < 1 ? 'now' : s + 's ago'); st.classList.toggle('bad', down);
-    let m = L.querySelector('.feedmsg'); if (down && !m) { L.insertAdjacentHTML('afterbegin', '<div class="feedmsg"><span><b>Live feed paused.</b> Connect a wallet to see the live feed, or refresh.</span><button class="btn y" type="button" data-feed>Connect to see live feed</button></div>'); }
-    else if (!down && m) m.remove(); } }, 1000);
+  for (let c = 0; c < 3; c++) { const st = $('#st' + c), s = OK[c] ? Math.round((Date.now() - OK[c]) / 1000) : null, L = $('#L' + c);
+    st.textContent = s === null ? 'connecting…' : 'live · ' + (s < 1 ? 'now' : s + 's ago'); st.classList.remove('bad');
+    let m = L.querySelector('.feedmsg'); if (m) m.remove(); } }, 1000);
 const T0W = Date.now();
-document.addEventListener('click', e => { if (e.target.closest('[data-feed]')) { connectModal(); pollSol(); pollNew(); pollHot(); } });
+document.addEventListener('click', e => { if (e.target.closest('[data-feed]')) { pollSol(); pollNew(); pollHot(); } });
 function tape(L) { const top = L.filter(t => (t.icon || isPumpT(t)) && t.usdPrice).sort((a, b) => (b.stats5m?.buyVolume || 0) - (a.stats5m?.buyVolume || 0)).slice(0, 18); if (!top.length) return; const html = top.map(t => { const c = t.stats1h?.priceChange; return `<span>${imgOf(t)}<b>${esc(t.symbol)}</b>${px(t.usdPrice)}${c != null ? ` <span class="${c >= 0 ? 'g' : 'r'}">${c >= 0 ? '+' : ''}${c.toFixed(1)}%</span>` : ''}</span>`; }).join(''); $('#run').innerHTML = html + html; }
 pollSol().then(() => { pollNew(); pollHot(); setTimeout(pollHot, 1500); }); setInterval(pollNew, 2500); setInterval(pollHot, 8000); setInterval(pollSol, 20000);
 for (let c = 0; c < 3; c++) render(c);
