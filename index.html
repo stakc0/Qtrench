@@ -134,7 +134,11 @@ body.intro-on .app,body.intro-on .tv{opacity:0;pointer-events:none}
 .vault3d canvas{position:absolute;inset:0;width:100%;height:100%}
 .vault3d .tg{position:absolute;left:14px;top:12px;font-family:var(--m);font-size:10.5px;color:var(--mu);z-index:2;line-height:1.5}
 .vault3d .tg b{color:var(--b);font-weight:600}
-.vault3d .hits{position:absolute;right:14px;top:12px;font-family:var(--m);font-size:10.5px;color:var(--r);z-index:2;text-align:right}
+.vault3d .hits{position:absolute;right:14px;top:12px;font-family:var(--m);font-size:10.5px;color:var(--b);z-index:2;text-align:right}
+.nofee-card{height:176px;display:grid;align-content:center;gap:10px;padding:18px 16px;background:linear-gradient(135deg,var(--bl),var(--p0) 62%);overflow:hidden}
+.nofee-card canvas{display:none!important}
+.nofee-card::before{content:"NOFEE";font-weight:900;font-stretch:125%;font-size:42px;letter-spacing:-.04em;color:var(--b);line-height:.82}
+.nofee-card::after{content:"zero platform fees · live terminal";font-family:var(--m);font-size:11px;color:var(--mu)}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:7px 10px;margin-top:12px;font-size:12px}
 .kv dt{color:var(--mu)}
 .kv dd{margin:0;text-align:right;font-family:var(--m);font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -317,7 +321,7 @@ body.dark .btn.y,body.dark .qb{box-shadow:0 10px 22px -12px rgba(109,130,255,.9)
   <div class="icopy">
     <div class="tg"><i></i>No-fee trading terminal</div>
     <h1>The first <span>no-fee</span> terminal for the trenches.</h1>
-    <p>Snipe new pairs, set limit orders and track wallets like any pro terminal. The difference: every order is signed with wallet keys a fees computer can’t forge.</p>
+    <p>Snipe new pairs, set limit orders and track wallets like any pro terminal. The difference: the terminal is built around clean routing and zero platform fees.</p>
     <div class="cta"><button class="btn y" id="enter" type="button">Open terminal</button><button class="btn k" id="buyQ" type="button" hidden>Buy $NO-FEE</button><button class="btn k" id="whyBtn" type="button">How it’s no-fee</button></div>
     <div class="facts"><div class="cafact" id="caFact" hidden><b>$NO-FEE</b><small class="mono" id="caFactT"></small></div><div><b>Jupiter + Solana</b><small>wallet signing</small></div><div><b id="fNew">—</b><small>new pairs, live</small></div><div><b id="fSol">—</b><small>SOL</small></div></div>
   </div>
@@ -332,7 +336,7 @@ body.dark .btn.y,body.dark .qb{box-shadow:0 10px 22px -12px rgba(109,130,255,.9)
     <span class="sp"></span>
     <button class="pill ca" id="caTop" type="button" hidden></button>
     <span class="pill sol num" id="solP"><img alt="" id="solI">SOL —</span>
-    <span class="pill qv" id="qvP" title="Wallet"><span class="dot"></span><span id="qvT">Wallet · ready</span></span>
+    <span class="pill qv" id="qvP" title="NOFEE"><span class="dot"></span><span id="qvT">NOFEE · ready</span></span>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
     <button class="btn y" id="connect" type="button">Connect wallet</button>
   </header>
@@ -349,7 +353,7 @@ body.dark .btn.y,body.dark .qb{box-shadow:0 10px 22px -12px rgba(109,130,255,.9)
     <aside class="rail" id="rail">
       <div class="box">
         <div class="bh"><b>Wallet</b><small id="vSt">Jupiter routing</small></div>
-        <div class="vault3d" id="v3"><div class="tg">Jupiter · Solana · direct<br><b id="vK">wallet not connected</b></div><div class="hits num" id="vHits">0 swaps routed</div></div>
+        <div class="vault3d nofee-card" id="v3"><div class="tg">Jupiter · Solana · direct<br><b id="vK">wallet not connected</b></div><div class="hits num" id="vHits">0 swaps routed</div></div>
         <dl class="kv"><dt>Connected wallet</dt><dd id="vPk">—</dd><dt>Route</dt><dd>Jupiter</dd><dt>Swaps routed</dt><dd id="vUsed">0</dd><dt>Last activity</dt><dd id="vMs">—</dd></dl>
         <div class="tgl"><div><b>Direct Jupiter execution</b><small>Transactions are signed by your wallet</small></div><button class="sw" id="pqT" role="switch" aria-checked="true" aria-label="Use direct Jupiter execution"></button></div>
         <button class="btn k" id="genK" type="button" style="width:100%;margin-top:10px">Connect wallet</button>
@@ -377,7 +381,7 @@ body.dark .btn.y,body.dark .qb{box-shadow:0 10px 22px -12px rgba(109,130,255,.9)
       <div class="opt"><label>Slippage %<input id="slip" value="15" inputmode="decimal"></label><label>Priority fee SOL<input id="prio" value="0.001" inputmode="decimal"></label></div>
       <div class="quote" id="quote"><div><span>You get</span><b id="qOut">—</b></div><div><span>Route</span><b id="qRt">—</b></div><div><span>Price impact</span><b id="qImp">—</b></div></div>
       <button class="btn gb go" id="go" type="button">Buy</button>
-      <div class="pqs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span id="pqs">Order signed with a one-time wallet key</span></div>
+      <div class="pqs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span id="pqs">NOFEE route prepared for wallet signing</span></div>
     </div>
     <div class="box"><div class="bh"><b>Token safety</b><small id="audS"></small></div><div class="aud" id="aud"></div></div>
   </div>
@@ -425,7 +429,7 @@ function toast(title, body = '', ms = 5200) { const e = document.createElement('
 function modal(html) { $('#mB').innerHTML = html; $('#modal').hidden = false; }
 $('#modal').addEventListener('click', e => { if (e.target.closest('[data-close]')) $('#modal').hidden = true; });
 
-// ===================== 3D: a glass fees vault with the Q inside (hero) and a glass vault with a key (rail)
+// ===================== Legacy intro renderers are disabled; visible product is NOFEE terminal only
 const ENV = r => new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(), .04).texture;
 const BLUE = '#2A45FF';
 const bgR = new THREE.WebGLRenderer({ canvas: $('#bg3d'), antialias: true, alpha: true }); bgR.setPixelRatio(Math.min(devicePixelRatio, 2)); bgR.setClearColor(0xffffff, 0); bgR.toneMapping = THREE.NeutralToneMapping; bgR.toneMappingExposure = 1.04; bgR.outputColorSpace = THREE.SRGBColorSpace;
@@ -446,7 +450,7 @@ let introK = 1, heroCenter = 0;
 function bgSize() { bgR.setSize(innerWidth, innerHeight, false); bgC.aspect = innerWidth / innerHeight; bgC.updateProjectionMatrix(); fitWM(); }
 function fitWM() { const w = $('#wm'), sp = $('#wmT'); w.style.fontSize = '100px'; const k = innerWidth * .93 / sp.getBoundingClientRect().width; w.style.fontSize = Math.min(100 * k, innerHeight * .25) + 'px'; document.documentElement.style.setProperty('--wmh', (w.getBoundingClientRect().height + innerHeight * .022) + 'px'); }
 addEventListener('resize', bgSize); document.fonts.ready.then(bgSize); bgSize(); setTimeout(fitWM, 600); setTimeout(fitWM, 1800);
-// rail vault: glass cube with a blue key, attacks bounce off it
+// Hidden legacy rail renderer kept inert so the terminal boot path stays stable
 const vR = new THREE.WebGLRenderer({ antialias: true, alpha: true }); vR.setPixelRatio(Math.min(devicePixelRatio, 2)); vR.setClearColor(0xffffff, 0); $('#v3').appendChild(vR.domElement);
 vR.toneMapping = THREE.NeutralToneMapping; vR.outputColorSpace = THREE.SRGBColorSpace;
 const vS = new THREE.Scene(), vC = new THREE.PerspectiveCamera(30, 1, .1, 50); vC.position.set(0, .2, 8.2); vC.lookAt(0, 0, 0); vS.environment = ENV(vR);
@@ -472,7 +476,7 @@ function loop(now) { RAF(loop); const t = (now - T0) / 1000;
     bgR.render(bgS, bgC); }
   if (!document.hidden && vR.domElement.width && !document.body.classList.contains('intro-on')) { vcube.rotation.set(.4 + Math.sin(t * .3) * .1, t * .3, 0); key.rotation.set(.2, t * .8, Math.sin(t * .7) * .15); key.scale.setScalar(1 + sigPulse * .18); sigPulse *= .93;
     for (let i = 0; i < NA; i++) { const a = aS[i]; a.t += .012 * a.sp; let r = 3.4 - a.t * 2.2; if (r < 1.55) { flashP.set(a.d.clone().multiplyScalar(1.55).toArray(), i * 3); a.t = 0; a.d.randomDirection(); hits++; r = 3.4; } aP.set(a.d.clone().multiplyScalar(r).toArray(), i * 3); }
-    aG.attributes.position.needsUpdate = true; flashG.attributes.position.needsUpdate = true; if ((t * 10 | 0) % 5 === 0) $('#vHits').textContent = hits.toLocaleString('en-US') + ' attacks absorbed';
+    aG.attributes.position.needsUpdate = true; flashG.attributes.position.needsUpdate = true; if ((t * 10 | 0) % 5 === 0) $('#vHits').textContent = used.toLocaleString('en-US') + ' swaps routed';
     vR.render(vS, vC); }
 }
 const mixN = (a, b, k) => a + (b - a) * k;
@@ -533,7 +537,7 @@ $('#mtabs').addEventListener('click', e => { const b = e.target.closest('button'
 // ===================== wallets
 let W = null; const WALLETS = [['Phantom', () => window.phantom?.solana?.isPhantom ? window.phantom.solana : null, 'https://phantom.com/download', 'data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%23AB9FF2%22/><path fill=%22%23fff%22 d=%22M5.13 19.2c2.297 0 4.023-1.92 5.053-3.436a2.9 2.9 0 0 0-.195.994c0 .885.53 1.516 1.574 1.516 1.433 0 2.965-1.208 3.758-2.51a2 2 0 0 0-.083.524c0 .617.362 1.006 1.1 1.006 2.324 0 4.663-3.959 4.663-7.421C21 7.175 19.58 4.8 16.016 4.8 9.752 4.8 3 12.154 3 16.905 3 18.771 4.044 19.2 5.13 19.2%22/></svg>'], ['Solflare', () => window.solflare?.isSolflare ? window.solflare : null, 'https://solflare.com/download', 'https://solflare.com/favicon.ico'], ['Backpack', () => window.backpack?.isBackpack ? window.backpack : (window.backpack || null), 'https://backpack.app/downloads', 'https://backpack.app/favicon.ico']];
 function connectModal() { modal(`<h3>Connect a wallet</h3><p>Trades route directly through Jupiter. Your wallet approves and signs every transaction. This terminal adds no platform fee.</p><div class="wl">${WALLETS.map(([n, g, dl, ic], i) => `<button type="button" data-w="${i}"><img src="${ic}" alt="">${n}<small>${g() ? 'detected' : 'install'}</small></button>`).join('')}</div>`);
-  $$('.wl [data-w]').forEach(b => b.addEventListener('click', async () => { const [n, g, dl] = WALLETS[+b.dataset.w], p = g(); if (!p) { window.open(dl, '_blank', 'noopener'); return; } try { const r = await p.connect(); const pk = (r?.publicKey || p.publicKey).toString(); W = { p, pk, n }; $('#modal').hidden = true; $('#connect').textContent = short(pk); $('#qvT').textContent = n + ' · connected'; $('#vPk').textContent = short(pk); $('#vK').textContent = n + ' connected'; $('#vMs').textContent = 'ready'; toast(n + ' connected', `<span class="mu mono">${pk}</span>`); balances(); } catch (e) { toast('Connection cancelled', `<span class="mu">${String(e?.message || e).slice(0, 120)}</span>`); } })); }
+  $$('.wl [data-w]').forEach(b => b.addEventListener('click', async () => { const [n, g, dl] = WALLETS[+b.dataset.w], p = g(); if (!p) { window.open(dl, '_blank', 'noopener'); return; } try { const r = await p.connect(); const pk = (r?.publicKey || p.publicKey).toString(); W = { p, pk, n }; $('#modal').hidden = true; $('#connect').textContent = short(pk); $('#qvT').textContent = 'NOFEE · connected'; $('#vPk').textContent = short(pk); $('#vK').textContent = n + ' connected'; $('#vMs').textContent = 'ready'; toast(n + ' connected', `<span class="mu mono">${pk}</span>`); balances(); } catch (e) { toast('Connection cancelled', `<span class="mu">${String(e?.message || e).slice(0, 120)}</span>`); } })); }
 $('#connect').addEventListener('click', () => W ? navigator.clipboard?.writeText(W.pk).then(() => toast('Address copied')) : connectModal());
 let HOLD = null; async function balances() { if (!W) return; try { HOLD = await getJSON(`${J}/ultra/v1/holdings/${W.pk}`); const sol = HOLD.uiAmount ?? (HOLD.amount ? HOLD.amount / 1e9 : 0); $('#bal').innerHTML = `Wallet <b class="num">${(+sol).toFixed(3)} SOL</b> · ${Object.keys(HOLD.tokens || {}).length} tokens`; } catch (e) { } }
 setInterval(balances, 15000);
