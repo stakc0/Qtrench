@@ -330,11 +330,12 @@ body.dark .theme-toggle{background:#0D1117;border-color:#1A202A;color:#E8C84B}
 .trailer-pop{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:22px;background:rgba(2,6,10,.82);backdrop-filter:blur(10px)}
 .trailer-pop[hidden]{display:none}
 .trailer-box{position:relative;width:min(920px,96vw);border:1px solid rgba(232,200,75,.32);border-radius:18px;background:#050608;box-shadow:0 28px 90px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.04);overflow:hidden}
-.trailer-box video{display:block;width:100%;max-height:82vh;object-fit:contain;background:#000}
+.trailer-box video{display:block;width:100%;max-height:82vh;object-fit:contain;background:#000 url("assets/trailer-poster.jpg") center/contain no-repeat}
 .trailer-x{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(5,6,8,.78);color:#fff;font-size:20px;font-weight:800;cursor:pointer}
 
 </style>
 <link rel="preload" href="assets/trailer.mp4" as="video" type="video/mp4">
+<link rel="preload" href="assets/trailer-poster.jpg" as="image">
 </head>
 <body class="dark">
 <div id="ibg"><div class="wm" id="wm"><span id="wmT">UNXIOM<sup>®</sup></span></div></div>
@@ -356,7 +357,7 @@ body.dark .theme-toggle{background:#0D1117;border-color:#1A202A;color:#E8C84B}
 <div class="trailer-pop" id="trailerPop" aria-label="Unxiom trailer" role="dialog">
   <div class="trailer-box">
     <button class="trailer-x" id="trailerClose" type="button" aria-label="Close trailer">×</button>
-    <video id="trailerVid" src="assets/trailer.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <video id="trailerVid" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/trailer-poster.jpg"><source src="assets/trailer.mp4" type="video/mp4"></video>
   </div>
 </div>
 
@@ -435,7 +436,7 @@ const J = 'https://lite-api.jup.ag', GT = 'https://api.geckoterminal.com/api/v2'
 const SOL_ICON = 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png';
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const trailerPop = $('#trailerPop'), trailerVid = $('#trailerVid');
-if (trailerVid) { trailerVid.muted = true; trailerVid.loop = true; trailerVid.controls = false; trailerVid.disablePictureInPicture = true; trailerVid.setAttribute('controlsList','nodownload nofullscreen noremoteplayback'); trailerVid.addEventListener('contextmenu', e => e.preventDefault()); trailerVid.play?.().catch(() => {}); }
+if (trailerVid) { trailerVid.muted = true; trailerVid.loop = true; trailerVid.controls = false; trailerVid.disablePictureInPicture = true; trailerVid.setAttribute('controlsList','nodownload nofullscreen noremoteplayback'); trailerVid.addEventListener('contextmenu', e => e.preventDefault()); trailerVid.play?.().catch(() => { const kick=()=>{trailerVid.play?.().catch(()=>{}); removeEventListener('pointerdown',kick);}; addEventListener('pointerdown',kick,{once:true}); }); }
 $('#trailerClose')?.addEventListener('click', () => { trailerPop.hidden = true; trailerVid?.pause?.(); });
 trailerPop?.addEventListener('click', e => { if (e.target === trailerPop) { trailerPop.hidden = true; trailerVid?.pause?.(); } });
 
