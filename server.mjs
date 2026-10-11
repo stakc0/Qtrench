@@ -15,4 +15,4 @@ const handler = async (req, res) => {
     res.end(data);
   } catch { res.writeHead(404, {'content-type':'text/plain'}); res.end('Not found'); }
 };
-http.createServer(handler).listen(port, '0.0.0.0', () => console.log(`No-Fee Terminal on http://localhost:${port}`));
+http.createServer(handler).listen(port, '0.0.0.0', () => console.log(`Unxiom Terminal on http://localhost:${port}`));

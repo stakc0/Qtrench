@@ -1,6 +1,6 @@
-# No-Fee Terminal
+# Unxiom Terminal
 
-A standalone Solana terminal with live market data, charts, wallet tracking, and direct Jupiter execution. The terminal is the default surface and adds no platform fee.
+A standalone Solana terminal with live market data, charts, wallet tracking, and direct Jupiter execution. Unxiom is the default terminal surface.
 
 ## Run
 
