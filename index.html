@@ -9,7 +9,7 @@
 <meta property="og:description" content="Live Solana markets, charts and direct Jupiter swaps. No platform fees.">
 <meta property="og:image" content="og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/jpeg" href="/unxiom-logo.jpg">
+<link rel="icon" type="image/png" href="/assets/unxiom-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500;600&display=swap">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
@@ -34,11 +34,11 @@ body:not(.intro-on) #bg3d{opacity:0}
 body.intro-on .app,body.intro-on .tv{opacity:0;pointer-events:none}
 /* top bar */
 .top{display:flex;align-items:center;gap:18px;padding:0 16px;border-bottom:1px solid var(--ln);background:rgba(255,255,255,.92);backdrop-filter:blur(14px)}
-.logo{display:flex;align-items:center;text-decoration:none;color:var(--tx);flex:none}
-.logo i{width:52px;height:52px;display:block;overflow:visible}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--tx);flex:none}
+.logo i{width:56px;height:56px;display:block;overflow:visible;flex:none}
 .logo i img{width:100%;height:100%;display:block;object-fit:contain}
-.logo i svg{width:21px;height:21px}
-.logo b{font-weight:900;font-stretch:125%;font-size:17px;letter-spacing:.005em}
+.logo i svg{display:none}
+.logo b{font-weight:900;font-stretch:125%;font-size:24px;letter-spacing:-.04em}
 .logo sup{font-size:8px;margin-left:-6px;color:var(--mu)}
 .tabs{display:flex;gap:2px}
 .tabs button{height:34px;padding:0 13px;border:0;border-radius:9px;background:transparent;color:var(--mu);font-weight:600;font-size:13.5px}
@@ -57,6 +57,9 @@ body.intro-on .app,body.intro-on .tv{opacity:0;pointer-events:none}
 .pill img{width:16px;height:16px;border-radius:50%}
 .pill.ca{cursor:pointer;font-family:var(--m);font-weight:500;font-size:12px;border-color:#C9D2FF;background:#fff}
 .pill.ca b{font-family:var(--f);font-weight:800;color:var(--b);margin-right:2px}
+.pill.xlink{text-decoration:none;color:var(--tx)}
+.pill.xlink b{color:var(--b);font-weight:900}
+.pill.market b{font-family:var(--m);color:var(--tx);font-weight:700}
 .cafact{cursor:pointer;border-color:#C9D2FF!important;background:#fff!important}
 .cafact b{color:var(--b)!important}
 .qv{border-color:#C9D2FF;background:var(--bl);color:var(--b);cursor:pointer}
@@ -330,7 +333,7 @@ body.dark .theme-toggle{background:#0D1117;border-color:#1A202A;color:#E8C84B}
 <canvas id="bg3d" aria-hidden="true"></canvas>
 
 <section class="intro" id="intro">
-  <div class="ibar"><div class="ilogo"><i><img src="/unxiom-logo.jpg" alt="Unxiom logo"></i></div><nav><span data-go="enter">Terminal</span><span data-go="why">Why Unxiom</span><span data-go="vault">Wallet</span></nav><button class="btn y" id="enter2" type="button">Open terminal</button></div>
+  <div class="ibar"><div class="ilogo"><i><img src="/assets/unxiom-logo.png" alt="Unxiom logo"></i></div><nav><span data-go="enter">Terminal</span><span data-go="why">Why Unxiom</span><span data-go="vault">Wallet</span></nav><button class="btn y" id="enter2" type="button">Open terminal</button></div>
   <div class="icopy">
     <div class="tg"><i></i>Unxiom trading terminal</div>
     <h1>The first <span>unxiom</span> terminal for the trenches.</h1>
@@ -343,11 +346,13 @@ body.dark .theme-toggle{background:#0D1117;border-color:#1A202A;color:#E8C84B}
 
 <div class="app" id="app">
   <header class="top">
-    <a class="logo" href="#" id="home" aria-label="Unxiom"><i><img src="/unxiom-logo.jpg" alt="Unxiom logo"></i></a>
+    <a class="logo" href="#" id="home" aria-label="Unxiom"><i><img src="/assets/unxiom-logo.png" alt="Unxiom logo"></i><b>UNXIOM</b></a>
     <nav class="tabs" id="tabs"><button type="button" aria-pressed="true" data-t="pulse">Pulse</button><button type="button" aria-pressed="false" data-t="trending">Trending</button><button type="button" aria-pressed="false" data-t="vault">Wallet</button></nav>
     <label class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" placeholder="Search ticker, name or paste a CA" autocomplete="off" spellcheck="false"><kbd>/</kbd><div class="sres" id="sres" hidden></div></label>
     <span class="sp"></span>
     <button class="pill ca" id="caTop" type="button" hidden></button>
+    <a class="pill xlink" href="https://x.com/unxiomtrade" target="_blank" rel="noreferrer"><b>X</b>@unxiomtrade</a>
+    <span class="pill market" id="caMarket"><b>MC $--</b><span>VOL $--</span></span>
     <span class="pill sol num" id="solP"><img alt="" id="solI">SOL —</span>
     <span class="pill qv" id="qvP" title="NOFEE"><span class="dot"></span><span id="qvT">NOFEE · ready</span></span>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
@@ -409,7 +414,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 const RAF = window.__RAF || requestAnimationFrame.bind(window);
 const BR = new URLSearchParams(location.search).get('brand'); if (BR) document.body.classList.add('b-' + BR);
-const CA = '', DOMAIN = '';
+const CA = 'BMwzQHSGNJX5JkBS6vLkG9cKKU6BiWPeRRJVdsm6pump', DOMAIN = '';
 const J = 'https://lite-api.jup.ag', GT = 'https://api.geckoterminal.com/api/v2', SOL = 'So11111111111111111111111111111111111111112';
 const SOL_ICON = 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png';
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
@@ -645,6 +650,8 @@ renderTrk(); setInterval(renderTrk, 30000);
 // ===================== tabs
 $('#tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const t = b.dataset.t; $$('#tabs button').forEach(x => x.setAttribute('aria-pressed', x === b)); if (t === 'vault') { $('#rail').scrollTo({ top: 0, behavior: 'smooth' }); $('#v3').animate([{ boxShadow: 'inset 0 0 0 1px #FFE14F' }, { boxShadow: 'inset 0 0 0 1px transparent' }], { duration: 1200 }); }
   if (t === 'trending') { const L = [...store.values()].filter(x => x.stats1h).sort((a, b) => (b.stats1h.buyVolume || 0) - (a.stats1h.buyVolume || 0)).slice(0, 40); COLS[1] = L; render(1); $$('.ch b')[1].textContent = 'Trending · 1h'; } else if (t === 'pulse') { $$('.ch b')[1].textContent = 'Final stretch'; pollHot(); } });
+async function pollCaMarket() { try { const r = await fetch('https://api.dexscreener.com/latest/dex/tokens/' + CA, { cache: 'no-store' }); if (!r.ok) return; const j = await r.json(); const pair = (j.pairs || []).sort((a,b) => Number(b.liquidity?.usd || 0) - Number(a.liquidity?.usd || 0))[0]; if (!pair) return; const mc = Number(pair.marketCap || pair.fdv || 0); const vol = Number(pair.volume?.h24 || 0); const el = $('#caMarket'); if (el) el.innerHTML = '<b>MC ' + usd(mc) + '</b><span>VOL ' + usd(vol) + '</span>'; } catch (e) { } }
+pollCaMarket(); setInterval(pollCaMarket, 30000);
 if (CA) { const copyCA = () => { navigator.clipboard?.writeText(CA); toast('$UNXIOM CA copied', `<span class="mu mono">${CA}</span>`); };
   $('#caT').textContent = short(CA); $('#caT').addEventListener('click', copyCA);
   const top = $('#caTop'); top.hidden = false; top.innerHTML = `<b>$UNXIOM</b>${short(CA)}`; top.title = 'Copy CA ' + CA; top.addEventListener('click', copyCA);
