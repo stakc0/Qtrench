@@ -9,7 +9,7 @@
 <meta property="og:description" content="Live Solana markets, charts and direct Jupiter swaps. No platform fees.">
 <meta property="og:image" content="og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232A45FF'/%3E%3Cg transform='translate(12 12) scale(.76)'%3E%3Ccircle cx='46' cy='45' r='29' fill='none' stroke='%23fff' stroke-width='13'/%3E%3Crect x='52' y='73' width='38' height='13' rx='6.5' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" type="image/jpeg" href="/no-fee-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500;600&display=swap">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script>
@@ -35,7 +35,8 @@ body.intro-on .app,body.intro-on .tv{opacity:0;pointer-events:none}
 /* top bar */
 .top{display:flex;align-items:center;gap:18px;padding:0 16px;border-bottom:1px solid var(--ln);background:rgba(255,255,255,.92);backdrop-filter:blur(14px)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--tx);flex:none}
-.logo i{width:32px;height:32px;border-radius:50%;background:var(--b);display:grid;place-items:center;box-shadow:0 6px 14px -6px rgba(42,69,255,.7)}
+.logo i{width:32px;height:32px;border-radius:50%;overflow:hidden;display:block;box-shadow:0 6px 14px -6px rgba(42,69,255,.7)}
+.logo i img{width:100%;height:100%;display:block;object-fit:cover}
 .logo i svg{width:21px;height:21px}
 .logo b{font-weight:900;font-stretch:125%;font-size:17px;letter-spacing:.005em}
 .logo sup{font-size:8px;margin-left:-6px;color:var(--mu)}
@@ -227,7 +228,8 @@ body.intro-on .app,body.intro-on .tv{opacity:0;pointer-events:none}
 .intro.off{opacity:0;visibility:hidden}
 .ibar{position:relative;flex:none;margin-top:26px;display:flex;align-items:center;gap:30px}
 .ilogo{display:flex;align-items:center;gap:12px}
-.ilogo i{width:44px;height:44px;border-radius:50%;background:var(--b);display:grid;place-items:center;box-shadow:0 10px 24px -10px rgba(42,69,255,.9)}
+.ilogo i{width:44px;height:44px;border-radius:50%;overflow:hidden;display:block;box-shadow:0 10px 24px -10px rgba(42,69,255,.9)}
+.ilogo i img{width:100%;height:100%;display:block;object-fit:cover}
 .ilogo i svg{width:29px;height:29px}
 .ilogo b{font-weight:900;font-stretch:125%;font-size:22px}
 .ilogo sup{font-size:9px;color:var(--mu);margin-left:-8px}
@@ -328,7 +330,7 @@ body.dark .theme-toggle{background:#0D1117;border-color:#1A202A;color:#E8C84B}
 <canvas id="bg3d" aria-hidden="true"></canvas>
 
 <section class="intro" id="intro">
-  <div class="ibar"><div class="ilogo"><i><svg viewBox="0 0 100 100"><circle cx="46" cy="45" r="29" fill="none" stroke="#fff" stroke-width="13"/><rect x="52" y="73" width="38" height="13" rx="6.5" fill="#fff"/></svg></i><b>NO-FEE</b><sup>®</sup></div><nav><span data-go="enter">Terminal</span><span data-go="why">Why no-fee</span><span data-go="vault">Wallet</span></nav><button class="btn y" id="enter2" type="button">Open terminal</button></div>
+  <div class="ibar"><div class="ilogo"><i><img src="/no-fee-logo.jpg" alt="No-Fee Terminal logo"></i><b>NO-FEE</b><sup>®</sup></div><nav><span data-go="enter">Terminal</span><span data-go="why">Why no-fee</span><span data-go="vault">Wallet</span></nav><button class="btn y" id="enter2" type="button">Open terminal</button></div>
   <div class="icopy">
     <div class="tg"><i></i>No-fee trading terminal</div>
     <h1>The first <span>no-fee</span> terminal for the trenches.</h1>
@@ -341,7 +343,7 @@ body.dark .theme-toggle{background:#0D1117;border-color:#1A202A;color:#E8C84B}
 
 <div class="app" id="app">
   <header class="top">
-    <a class="logo" href="#" id="home"><i><svg viewBox="0 0 100 100"><circle cx="46" cy="45" r="29" fill="none" stroke="#fff" stroke-width="13"/><rect x="52" y="73" width="38" height="13" rx="6.5" fill="#fff"/></svg></i><b>NO-FEE</b></a>
+    <a class="logo" href="#" id="home"><i><img src="/no-fee-logo.jpg" alt="No-Fee Terminal logo"></i><b>NO-FEE</b></a>
     <nav class="tabs" id="tabs"><button type="button" aria-pressed="true" data-t="pulse">Pulse</button><button type="button" aria-pressed="false" data-t="trending">Trending</button><button type="button" aria-pressed="false" data-t="vault">Wallet</button></nav>
     <label class="srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" placeholder="Search ticker, name or paste a CA" autocomplete="off" spellcheck="false"><kbd>/</kbd><div class="sres" id="sres" hidden></div></label>
     <span class="sp"></span>
