@@ -298,17 +298,28 @@ body.intro-on .app,body.intro-on .tv{opacity:1!important;pointer-events:auto!imp
 .theme-toggle{width:36px;height:36px;border-radius:999px;border:1px solid var(--ln);background:var(--p1);color:var(--tx);display:grid;place-items:center;font-size:15px;font-weight:900;transition:background-color .2s,border-color .2s,color .2s,transform .15s}
 .theme-toggle:active{transform:scale(.96)}
 .theme-toggle:hover{border-color:var(--b);color:var(--b)}
-body.dark{--bg:#060912;--p0:#0B1020;--p1:#10172A;--p2:#151F35;--p3:#1F2B44;--ln:#1E293B;--ln2:#334155;--tx:#F8FAFC;--mu:#94A3B8;--mu2:#64748B;--b:#6D82FF;--b2:#5368F6;--b3:#C7D2FE;--bl:#141D3E;--g:#20D69B;--r:#FF5570;color-scheme:dark}
+body.dark{--bg:#050608;--p0:#080A0F;--p1:#0B0E13;--p2:#11161D;--p3:#171D26;--ln:#151A21;--ln2:#252D37;--tx:#E6EBF2;--mu:#7D8794;--mu2:#586272;--b:#E8C84B;--b2:#CFAF32;--b3:#FFF1A6;--bl:#171407;--g:#25D889;--r:#F04D62;color-scheme:dark}
 body.dark,body.dark html{background:var(--bg);color:var(--tx)}
 body.dark ::-webkit-scrollbar-thumb{background:#334155}
-body.dark .top,body.dark .tape,body.dark .col,body.dark .rail,body.dark .bot,body.dark .tvh,body.dark .tvl,body.dark .trade,body.dark .mtabs,body.dark .sheet,body.dark .toast{background:rgba(11,16,32,.96);border-color:var(--ln);color:var(--tx)}
-body.dark .srch,body.dark .pill,body.dark .pill.ca,body.dark .cafact,body.dark .btn.k,body.dark .sres,body.dark .row:hover,body.dark .vault3d,body.dark .feedmsg,body.dark .tgl,body.dark .qlog div,body.dark .trk .w,body.dark .ad input,body.dark .tvh .back,body.dark .chart .cbar button,body.dark .tbl th,body.dark .seg,body.dark .amt,body.dark .pre button,body.dark .opt input,body.dark .quote,body.dark .aud div,body.dark .wl button{background:var(--p1)!important;border-color:var(--ln)!important;color:var(--tx)!important}
-body.dark .srch:focus-within,body.dark .amt:focus-within{background:var(--p0)!important;border-color:var(--b)!important;box-shadow:0 0 0 4px rgba(109,130,255,.16)}
-body.dark .tabs button:hover,body.dark .tabs button[aria-pressed="true"],body.dark .mtabs button[aria-pressed="true"],body.dark .chart .cbar button[aria-pressed="true"]{background:var(--bl)!important;color:var(--b)!important}
+body.dark .top,body.dark .tape,body.dark .col,body.dark .rail,body.dark .bot,body.dark .tvh,body.dark .tvl,body.dark .trade,body.dark .mtabs,body.dark .sheet,body.dark .toast{background:rgba(8,10,15,.98);border-color:var(--ln);color:var(--tx)}
+body.dark .srch,body.dark .pill,body.dark .pill.ca,body.dark .cafact,body.dark .btn.k,body.dark .sres,body.dark .row:hover,body.dark .vault3d,body.dark .feedmsg,body.dark .tgl,body.dark .qlog div,body.dark .trk .w,body.dark .ad input,body.dark .tvh .back,body.dark .chart .cbar button,body.dark .tbl th,body.dark .seg,body.dark .amt,body.dark .pre button,body.dark .opt input,body.dark .quote,body.dark .aud div,body.dark .wl button{background:#0D1117!important;border-color:#1A202A!important;color:var(--tx)!important}
+body.dark .srch:focus-within,body.dark .amt:focus-within{background:#0A0D12!important;border-color:var(--b)!important;box-shadow:0 0 0 3px rgba(232,200,75,.13)}
+body.dark .tabs button:hover,body.dark .tabs button[aria-pressed="true"],body.dark .mtabs button[aria-pressed="true"],body.dark .chart .cbar button[aria-pressed="true"]{background:#171407!important;color:var(--b)!important}
 body.dark .row,body.dark .tbl td{border-color:#111827!important}
 body.dark .av img,body.dark .av .lp,body.dark .tic>*,body.dark .sic>*{background:var(--p2)!important;border-color:var(--p2)!important}
 body.dark .scrim{background:rgba(2,6,23,.72)}
-body.dark .btn.y,body.dark .qb{box-shadow:0 10px 22px -12px rgba(109,130,255,.9)}
+body.dark .btn.y,body.dark .qb{background:#161A21;color:#F7D85F;border:1px solid rgba(232,200,75,.35);box-shadow:0 0 18px -10px rgba(232,200,75,.9)}
+
+
+body.dark .main{background:#050608}
+body.dark .pulse{background:#11161D}
+body.dark .row{background:#080A0F;border-color:#11161D!important}
+body.dark .row:hover{background:#111407!important}
+body.dark .pulse .col:nth-child(2) .row:nth-child(-n+3),body.dark .pulse .col:nth-child(3) .row:nth-child(2),body.dark .pulse .col:nth-child(3) .row:nth-child(4){background:linear-gradient(90deg,rgba(232,200,75,.14),rgba(232,200,75,.045) 42%,rgba(8,10,15,.92));box-shadow:inset 0 0 0 1px rgba(232,200,75,.28),0 0 22px -16px rgba(232,200,75,.85)}
+body.dark .l2 .age,body.dark .y{color:#4BB8FF}
+body.dark .rt .mc b,body.dark .l3 b{color:#DCE6F3}
+body.dark .tape b{color:#E6EBF2}
+body.dark .theme-toggle{background:#0D1117;border-color:#1A202A;color:#E8C84B}
 
 </style>
 </head>
@@ -402,9 +413,9 @@ const SOL_ICON = 'https://raw.githubusercontent.com/solana-labs/token-list/main/
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const themeBtn = () => $('#themeToggle');
 function applyTheme(mode) { document.body.classList.toggle('dark', mode === 'dark'); const b = themeBtn(); if (b) { b.textContent = mode === 'dark' ? '☀' : '◐'; b.setAttribute('aria-pressed', String(mode === 'dark')); } }
-let savedTheme = 'light'; try { savedTheme = localStorage.getItem('qt-theme') || 'light'; } catch (e) { }
+let savedTheme = 'dark'; try { savedTheme = localStorage.getItem('qt-theme-v2') || 'dark'; } catch (e) { }
 applyTheme(savedTheme);
-setTimeout(() => { const b = themeBtn(); if (b) b.addEventListener('click', () => { const next = document.body.classList.contains('dark') ? 'light' : 'dark'; try { localStorage.setItem('qt-theme', next); } catch (e) { } applyTheme(next); }); }, 0);
+setTimeout(() => { const b = themeBtn(); if (b) b.addEventListener('click', () => { const next = document.body.classList.contains('dark') ? 'light' : 'dark'; try { localStorage.setItem('qt-theme-v2', next); } catch (e) { } applyTheme(next); }); }, 0);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const short = a => a ? a.slice(0, 4) + '…' + a.slice(-4) : '';
 const usd = v => v == null || isNaN(v) ? '—' : v >= 1e9 ? '$' + (v / 1e9).toFixed(2) + 'B' : v >= 1e6 ? '$' + (v / 1e6).toFixed(2) + 'M' : v >= 1e3 ? '$' + (v / 1e3).toFixed(1) + 'K' : '$' + v.toFixed(v < 10 ? 2 : 0);
